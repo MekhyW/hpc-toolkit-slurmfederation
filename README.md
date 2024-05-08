@@ -138,35 +138,6 @@ See
 [Google Cloud Docs](https://cloud.google.com/hpc-toolkit/docs/setup/configure-environment#enable-apis)
 for instructions.
 
-## GCP Quotas
-
-You may need to request additional quota to be able to deploy and use your HPC
-cluster.
-
-See
-[Google Cloud Docs](https://cloud.google.com/hpc-toolkit/docs/setup/hpc-blueprint#request-quota)
-for more information.
-
-## Billing Reports
-
-You can view your billing reports for your HPC cluster on the
-[Cloud Billing Reports](https://cloud.google.com/billing/docs/how-to/reports)
-page. ​​To view the Cloud Billing reports for your Cloud Billing account,
-including viewing the cost information for all of the Cloud projects that are
-linked to the account, you need a role that includes the
-`billing.accounts.getSpendingInformation` permission on your Cloud Billing
-account.
-
-To view the Cloud Billing reports for your Cloud Billing account:
-
-1. In the Google Cloud Console, go to `Navigation Menu` >
-   [`Billing`](https://console.cloud.google.com/billing/overview).
-2. At the prompt, choose the Cloud Billing account for which you'd like to view
-   reports. The Billing Overview page opens for the selected billing account.
-3. In the Billing navigation menu, select `Reports`.
-
-In the right side, expand the Filters view and then filter by label, specifying the key `ghpc_deployment` (or `ghpc_blueprint`) and the desired value.
-
 ## Troubleshooting
 
 ### Authentication
@@ -200,38 +171,6 @@ message. Here are some common reasons for the deployment to fail:
     instructions at [Cloud credentials on your workstation](#cloud-credentials-on-your-workstation).
   * Ensure proper permissions are set in the cloud console
     [IAM section](https://console.cloud.google.com/iam-admin/iam).
-
-### Failure to Destroy VPC Network
-
-If `terraform destroy` fails with an error such as the following:
-
-```text
-│ Error: Error when reading or editing Subnetwork: googleapi: Error 400: The subnetwork resource 'projects/<project_name>/regions/<region>/subnetworks/<subnetwork_name>' is already being used by 'projects/<project_name>/zones/<zone>/instances/<instance_name>', resourceInUseByAnotherResource
-```
-
-or
-
-```text
-│ Error: Error waiting for Deleting Network: The network resource 'projects/<project_name>/global/networks/<vpc_network_name>' is already being used by 'projects/<project_name>/global/firewalls/<firewall_rule_name>'
-```
-
-These errors indicate that the VPC network cannot be destroyed because resources
-were added outside of Terraform and that those resources depend upon the
-network. These resources should be deleted manually. The first message indicates
-that a new VM has been added to a subnetwork within the VPC network. The second
-message indicates that a new firewall rule has been added to the VPC network.
-If your error message does not look like these, examine it carefully to identify
-the type of resource to delete and its unique name. In the two messages above,
-the resource names appear toward the end of the error message. The following
-links will take you directly to the areas within the Cloud Console for managing
-VMs and Firewall rules. Make certain that your project ID is selected in the
-drop-down menu at the top-left.
-
-* [Cloud Console: Manage VM instances][cc-vms]
-* [Cloud Console: Manage Firewall Rules][cc-firewall]
-
-[cc-vms]: https://console.cloud.google.com/compute/instances
-[cc-firewall]:  https://console.cloud.google.com/networking/firewalls/list
 
 ## Inspecting the Deployment
 
@@ -281,25 +220,6 @@ hpc-slurm/
 See
 [Cloud Docs on Installing Dependencies](https://cloud.google.com/hpc-toolkit/docs/setup/install-dependencies).
 
-### Notes on Packer
-
-The Toolkit supports Packer templates in the contemporary [HCL2 file
-format][pkrhcl2] and not in the legacy JSON file format. We require the use of
-Packer 1.7.9 or above, and recommend using the latest release.
-
-The Toolkit's [Packer template module documentation][pkrmodreadme] describes
-input variables and their behavior. An [image-building example][pkrexample]
-and [usage instructions][pkrexamplereadme] are provided. The example integrates
-Packer, Terraform and
-[startup-script](./modules/scripts/startup-script/README.md) runners to
-demonstrate the power of customizing images using the same scripts that can be
-applied at boot-time.
-
-[pkrhcl2]: https://www.packer.io/guides/hcl
-[pkrmodreadme]: modules/packer/custom-image/README.md
-[pkrexamplereadme]: examples/README.md#image-builderyaml
-[pkrexample]: examples/image-builder.yaml
-
 ## Development
 
 The following setup is in addition to the [dependencies](#dependencies) needed
@@ -342,17 +262,3 @@ Follow these steps to install and setup pre-commit in your cloned repository:
     ```
 
 Now pre-commit is configured to automatically run before you commit.
-
-### Development on macOS
-
-While macOS is a supported environment for building and executing the Toolkit,
-it is not supported for Toolkit development due to GNU specific shell scripts.
-
-If developing on a mac, a workaround is to install GNU tooling by installing
-`coreutils` and `findutils` from a package manager such as homebrew or conda.
-
-### Contributing
-
-Please refer to the [contributing file](CONTRIBUTING.md) in our GitHub
-repository, or to
-[Google’s Open Source documentation](https://opensource.google/docs/releasing/template/CONTRIBUTING/#).
