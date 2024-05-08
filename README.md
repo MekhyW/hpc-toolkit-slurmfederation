@@ -1,5 +1,10 @@
 # Google HPC-Toolkit
 
+TODO: update description for vagrant-cluster-hybrid project
+
+Reference for setting up cluster federation:
+https://github.com/GoogleCloudPlatform/slurm-gcp/blob/master/docs/federation.md#federated-cluster-guide
+
 ## Description
 
 HPC Toolkit is an open-source software offered by Google Cloud which makes it
