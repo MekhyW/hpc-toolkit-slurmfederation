@@ -15,17 +15,6 @@ networking, storage, etc.) following Google Cloud best-practices, in a repeatabl
 manner. The HPC Toolkit is designed to be highly customizable and extensible,
 and intends to address the HPC deployment needs of a broad range of customers.
 
-## Detailed documentation and examples
-
-The Toolkit comes with a suite of [tutorials], [examples], and full
-documentation for a suite of [modules] that have been designed for HPC use cases.
-More information can be found on the
-[Google Cloud Docs](https://cloud.google.com/hpc-toolkit/docs/overview).
-
-[tutorials]: docs/tutorials/README.md
-[examples]: examples/README.md
-[modules]: modules/README.md
-
 ## Quickstart
 
 Running through the
