@@ -1,6 +1,6 @@
 # Google HPC-Toolkit
 
-TODO: update description for vagrant-cluster-hybrid project
+TODO: update description for vagrant-cluster-hybrid project (assume cloud shell for setting up, which already comes with the updated dependencies preinstalled [gcloud, terraform, git, packer and go])
 
 Reference for setting up cluster federation:
 https://github.com/GoogleCloudPlatform/slurm-gcp/blob/master/docs/federation.md#federated-cluster-guide
@@ -44,8 +44,6 @@ make
 ./ghpc --version
 ./ghpc --help
 ```
-
-> **_NOTE:_** You may need to [install dependencies](#dependencies) first.
 
 ## HPC Toolkit Components
 
@@ -220,15 +218,7 @@ hpc-slurm/
   .ghpc/
 ```
 
-## Dependencies
-
-See
-[Cloud Docs on Installing Dependencies](https://cloud.google.com/hpc-toolkit/docs/setup/install-dependencies).
-
 ## Development
-
-The following setup is in addition to the [dependencies](#dependencies) needed
-to build and run HPC-Toolkit.
 
 Please use the `pre-commit` hooks [configured](./.pre-commit-config.yaml) in
 this repository to ensure that all changes are validated, tested and properly
