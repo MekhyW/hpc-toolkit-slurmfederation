@@ -1,6 +1,6 @@
 # HPC-Toolkit SlurmFederation
 
-TODO: update description for vagrant-cluster-hybrid project
+TODO: update description and about for vagrant-cluster-hybrid project
 
 [Hybrid Cluster Guide](https://github.com/GoogleCloudPlatform/slurm-gcp/blob/5.10.6/docs/hybrid.md)
 
@@ -80,50 +80,6 @@ following command and provide your current project ID as the argument:
 ```shell
 gcloud auth application-default set-quota-project ${PROJECT-ID}
 ```
-
-### Cloud credentials in virtualized cloud environments
-
-In virtualized settings, the cloud credentials of accounts can be attached
-directly to the execution environment. For example: a VM or a container can
-have [service accounts](https://cloud.google.com/iam/docs/service-accounts)
-attached to them. The Google [Cloud Shell][cloud-shell] is an interactive
-command line environment which inherits the credentials of the user logged in
-to the Google Cloud Console.
-
-[cloud-shell]: https://console.cloud.google.com/home/dashboard?cloudshell=true
-[cloud-shell-limitations]: https://cloud.google.com/shell/docs/quotas-limits#limitations_and_restrictions
-
-Many of the above examples are easily executed within a Cloud Shell environment.
-Be aware that Cloud Shell has [several limitations][cloud-shell-limitations],
-in particular an inactivity timeout that will close running shells after 20
-minutes. Please consider it only for blueprints that are quickly deployed.
-
-## VM Image Support
-
-### Standard Images
-
-The HPC Toolkit officially supports the following VM images:
-
-* HPC CentOS 7
-* HPC Rocky Linux 8
-* Debian 11
-* Ubuntu 20.04 LTS
-
-For more information on these and other images, see
-[docs/vm-images.md](docs/vm-images.md).
-
-### Slurm Images
-
-> **_Warning:_** Slurm Terraform modules cannot be directly used on the standard OS images. They must be used in combination with images built for the versioned release of the Terraform module.
-
-The HPC Toolkit provides modules and examples for implementing pre-built and custom Slurm VM images, see [Slurm on GCP](docs/vm-images.md#slurm-on-gcp)
-
-## Blueprint Validation
-
-The Toolkit contains "validator" functions that perform basic tests of the
-blueprint to ensure that deployment variables are valid and that the HPC
-environment can be provisioned in your Google Cloud project. Further information
-can be found in [dedicated documentation](docs/blueprint-validation.md).
 
 ## Enable GCP APIs
 
