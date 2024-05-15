@@ -228,3 +228,11 @@ See
 > * [google-cloud-pubsub]
 > * A full list of recommended python packages is available in a
 >   [requirements.txt] file in the [slurm-gcp] repo.
+
+[terraform]: https://learn.hashicorp.com/tutorials/terraform/install-cli
+[addict]: https://pypi.org/project/addict/
+[httplib2]: https://pypi.org/project/httplib2/
+[pyyaml]: https://pypi.org/project/PyYAML/
+[google-api-python-client]: https://pypi.org/project/google-api-python-client/
+[google-cloud-pubsub]: https://pypi.org/project/google-cloud-pubsub/
+[requirements.txt]: https://github.com/GoogleCloudPlatform/slurm-gcp/blob/5.10.6/scripts/requirements.txt
