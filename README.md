@@ -1,9 +1,12 @@
-# Google HPC-Toolkit
+# HPC-Toolkit SlurmFederation
 
 TODO: update description for vagrant-cluster-hybrid project
 
-Reference for setting up cluster federation:
-https://github.com/GoogleCloudPlatform/slurm-gcp/blob/master/docs/federation.md#federated-cluster-guide
+[Hybrid Cluster Guide](https://github.com/GoogleCloudPlatform/slurm-gcp/blob/5.10.6/docs/hybrid.md)
+
+[Full Hybrid Slurm Cluster Example](https://github.com/GoogleCloudPlatform/slurm-gcp/blob/5.10.6/terraform/slurm_cluster/examples/slurm_cluster/hybrid/full/README.md)
+
+[Federated Cluster Guide](https://github.com/GoogleCloudPlatform/slurm-gcp/blob/master/docs/federation.md#federated-cluster-guide)
 
 ## Description
 
@@ -27,8 +30,8 @@ If a self directed path is preferred, you can use the following commands to
 build the `ghpc` binary:
 
 ```shell
-git clone https://github.com/GoogleCloudPlatform/hpc-toolkit
-cd hpc-toolkit
+git clone https://github.com/MekhyW/hpc-toolkit-slurmfederation.git
+cd hpc-toolkit-slurmfederation
 make
 ./ghpc --version
 ./ghpc --help
@@ -214,45 +217,14 @@ hpc-slurm/
 See
 [Cloud Docs on Installing Dependencies](https://cloud.google.com/hpc-toolkit/docs/setup/install-dependencies).
 
-## Development
-
-The following setup is in addition to the [dependencies](#dependencies) needed
-to build and run HPC-Toolkit.
-
-Please use the `pre-commit` hooks [configured](./.pre-commit-config.yaml) in
-this repository to ensure that all changes are validated, tested and properly
-documented before pushing code changes. The pre-commits configured
-in the HPC Toolkit have a set of dependencies that need to be installed before
-successfully passing.
-
-Follow these steps to install and setup pre-commit in your cloned repository:
-
-1. Install pre-commit using the instructions from [the pre-commit website](https://pre-commit.com/).
-1. Install TFLint using the instructions from
-   [the TFLint documentation](https://github.com/terraform-linters/tflint#installation).
-
-   > **_NOTE:_** The version of TFLint must be compatible with the Google plugin
-   > version identified in [tflint.hcl](.tflint.hcl). Versions of the plugin
-   > `>=0.20.0` should use `tflint>=0.40.0`. These versions are readily
-   > available via GitHub or package managers. Please review the [TFLint Ruleset
-   > for Google Release Notes][tflint-google] for up-to-date requirements.
-
-[tflint-google]: https://github.com/terraform-linters/tflint-ruleset-google/releases
-
-1. Install ShellCheck using the instructions from
-   [the ShellCheck documentation](https://github.com/koalaman/shellcheck#installing)
-1. The other dev dependencies can be installed by running the following command
-   in the project root directory:
-
-    ```shell
-    make install-dev-deps
-    ```
-
-1. Pre-commit is enabled on a repo-by-repo basis by running the following command
-   in the project root directory:
-
-    ```shell
-    pre-commit install
-    ```
-
-Now pre-commit is configured to automatically run before you commit.
+> **_NOTE:_** The hybrid module requires the following dependencies to be
+> installed on the system deploying the module:
+>
+> * [terraform]
+> * [addict]
+> * [httplib2]
+> * [pyyaml]
+> * [google-api-python-client]
+> * [google-cloud-pubsub]
+> * A full list of recommended python packages is available in a
+>   [requirements.txt] file in the [slurm-gcp] repo.

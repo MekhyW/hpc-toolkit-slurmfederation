@@ -17,7 +17,7 @@
 blueprint_name: hpc-slurm
 
 vars:
-  project_id:  ## Set GCP Project ID Here ##
+  project_id: vagrantcluster-hybrid-slurmfed
   deployment_name: hpc-slurmfederation
   region: us-central1
   zone: us-central1-a
@@ -41,13 +41,13 @@ deployment_groups:
       local_mount: /home
 
   - id: debug_node_group
-    source: community/modules/compute/schedmd-slurm-gcp-v5-node-group
+    source: ./community/modules/compute/schedmd-slurm-gcp-v5-node-group
     settings:
       node_count_dynamic_max: 4
       machine_type: n2-standard-2
 
   - id: debug_partition
-    source: community/modules/compute/schedmd-slurm-gcp-v5-partition
+    source: ./community/modules/compute/schedmd-slurm-gcp-v5-partition
     use:
     - network1
     - homefs
@@ -59,13 +59,13 @@ deployment_groups:
       is_default: true
 
   - id: compute_node_group
-    source: community/modules/compute/schedmd-slurm-gcp-v5-node-group
+    source: ./community/modules/compute/schedmd-slurm-gcp-v5-node-group
     settings:
       node_count_dynamic_max: 20
       bandwidth_tier: gvnic_enabled
 
   - id: compute_partition
-    source: community/modules/compute/schedmd-slurm-gcp-v5-partition
+    source: ./community/modules/compute/schedmd-slurm-gcp-v5-partition
     use:
     - network1
     - homefs
@@ -74,7 +74,7 @@ deployment_groups:
       partition_name: compute
 
   - id: h3_node_group
-    source: community/modules/compute/schedmd-slurm-gcp-v5-node-group
+    source: ./community/modules/compute/schedmd-slurm-gcp-v5-node-group
     settings:
       node_count_dynamic_max: 20
       machine_type: h3-standard-88
@@ -84,7 +84,7 @@ deployment_groups:
       bandwidth_tier: gvnic_enabled
 
   - id: h3_partition
-    source: community/modules/compute/schedmd-slurm-gcp-v5-partition
+    source: ./community/modules/compute/schedmd-slurm-gcp-v5-partition
     use:
     - network1
     - homefs
@@ -92,19 +92,19 @@ deployment_groups:
     settings:
       partition_name: h3
 
-  - id: slurm_controller
-    source: community/modules/scheduler/schedmd-slurm-gcp-v5-controller
+  - id: slurm-controller
+    source: ./community/modules/scheduler/schedmd-slurm-gcp-v5-hybrid
     use:
-    - network1
-    - debug_partition
-    - compute_partition
-    - h3_partition
-    - homefs
+    - debug-partition
+    - compute-partition
+    - pre-existing-storage
     settings:
-      disable_controller_public_ips: false
+      output_dir: ./hybrid
+      slurm_bin_dir: /usr/local/bin
+      slurm_control_host: static-controller
 
   - id: slurm_login
-    source: community/modules/scheduler/schedmd-slurm-gcp-v5-login
+    source: ./community/modules/scheduler/schedmd-slurm-gcp-v5-login
     use:
     - network1
     - slurm_controller
