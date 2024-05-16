@@ -120,3 +120,9 @@ deployment_groups:
     settings:
       dns_zone_name: hpc-slurm
       dns_domain_name: hpc-slurm
+
+  - id: vpn
+    source: modules/network/vpn
+    use:
+    - network1
+    - slurm_controller
