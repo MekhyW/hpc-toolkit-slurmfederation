@@ -78,8 +78,6 @@ deployment_groups:
     settings:
       node_count_dynamic_max: 20
       machine_type: h3-standard-88
-      # H3 does not support pd-ssd and pd-standard
-      # https://cloud.google.com/compute/docs/compute-optimized-machines#h3_disks
       disk_type: pd-balanced
       bandwidth_tier: gvnic_enabled
 
@@ -97,7 +95,6 @@ deployment_groups:
     use:
     - debug_partition
     - compute_partition
-    - pre-existing-storage
     settings:
       output_dir: ./hybrid
       slurm_bin_dir: /usr/local/bin
@@ -111,3 +108,15 @@ deployment_groups:
     settings:
       machine_type: n2-standard-4
       disable_login_public_ips: false
+
+  - id: dns
+    source: modules/dns/cloud-dns
+    use: 
+    - network1
+    - slurm_controller
+    - compute_partition
+    - h3_partition
+    - debug_partition
+    settings:
+      dns_zone_name: hpc-slurm
+      dns_domain_name: hpc-slurm
