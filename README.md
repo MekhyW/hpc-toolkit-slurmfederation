@@ -182,6 +182,7 @@ See
 > * [pyyaml]
 > * [google-api-python-client]
 > * [google-cloud-pubsub]
+> * [go-lang]
 > * A full list of recommended python packages is available in a
 >   [requirements.txt] file in the [slurm-gcp] repo.
 
@@ -191,4 +192,5 @@ See
 [pyyaml]: https://pypi.org/project/PyYAML/
 [google-api-python-client]: https://pypi.org/project/google-api-python-client/
 [google-cloud-pubsub]: https://pypi.org/project/google-cloud-pubsub/
+[go-lang]: https://go.dev/doc/install
 [requirements.txt]: https://github.com/GoogleCloudPlatform/slurm-gcp/blob/5.10.6/scripts/requirements.txt
