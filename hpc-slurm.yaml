@@ -95,8 +95,8 @@ deployment_groups:
   - id: slurm-controller
     source: ./community/modules/scheduler/schedmd-slurm-gcp-v5-hybrid
     use:
-    - debug-partition
-    - compute-partition
+    - debug_partition
+    - compute_partition
     - pre-existing-storage
     settings:
       output_dir: ./hybrid
