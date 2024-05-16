@@ -175,7 +175,7 @@ See
 
 > **_NOTE:_** The hybrid module requires the following dependencies to be
 > installed on the system deploying the module:
->
+> * [gcloud]
 > * [terraform]
 > * [addict]
 > * [httplib2]
@@ -186,6 +186,7 @@ See
 > * A full list of recommended python packages is available in a
 >   [requirements.txt] file in the [slurm-gcp] repo.
 
+[gcloud]: https://cloud.google.com/sdk/docs/install?hl=pt-br#linux
 [terraform]: https://learn.hashicorp.com/tutorials/terraform/install-cli
 [addict]: https://pypi.org/project/addict/
 [httplib2]: https://pypi.org/project/httplib2/
