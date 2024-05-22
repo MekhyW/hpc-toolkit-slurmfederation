@@ -90,7 +90,7 @@ deployment_groups:
     settings:
       partition_name: h3
 
-  - id: slurm-controller
+  - id: slurm_controller
     source: ./community/modules/scheduler/schedmd-slurm-gcp-v5-hybrid
     use:
     - debug_partition

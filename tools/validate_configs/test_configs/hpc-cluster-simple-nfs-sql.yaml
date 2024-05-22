@@ -60,7 +60,7 @@ deployment_groups:
     settings:
       partition_name: compute
 
-  - id: slurm-controller
+  - id: slurm_controller
     source: community/modules/scheduler/schedmd-slurm-gcp-v6-controller
     use:
     - homefs
