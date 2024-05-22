@@ -18,6 +18,14 @@ networking, storage, etc.) following Google Cloud best-practices, in a repeatabl
 manner. The HPC Toolkit is designed to be highly customizable and extensible,
 and intends to address the HPC deployment needs of a broad range of customers.
 
+## Default settings
+
+- The default region is `us-central1`.
+- The default zone is `us-central1-a`.
+- The DNS domain name is `laboratorioderedesinsper.com.br`.
+- The on-premise IP range for the VPN is `192.168.50.0/24`.
+- The shared secret for the VPN is `osbatutinhas`.
+
 ## Quickstart
 
 Running through the

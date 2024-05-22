@@ -108,6 +108,7 @@ deployment_groups:
     settings:
       machine_type: n2-standard-4
       disable_login_public_ips: false
+      controller_instance_id: slurm_controller
 
   - id: dns
     source: modules/dns/cloud-dns
@@ -117,9 +118,34 @@ deployment_groups:
     - compute_partition
     - h3_partition
     - debug_partition
+    settings:
+      dns_records: 
+        - name: slurm-controller
+          type: A
+          ttl: 300
+          target: slurm_controller
+        - name: login
+          type: A
+          ttl: 300
+          target: slurm_login
+        - name: debug
+          type: A
+          ttl: 300
+          target: debug_partition
+        - name: compute
+          type: A
+          ttl: 300
+          target: compute_partition
+        - name: h3
+          type: A
+          ttl: 300
+          target: h3_partition
 
   - id: vpn
     source: modules/network/vpn
     use:
     - network1
     - slurm_controller
+    settings:
+      on_premise_ip_range: 192.168.50.0/24
+      shared_secret: osbatutinhas
