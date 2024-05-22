@@ -4,6 +4,7 @@ variable "project_id" {
 
 variable "domain_name" {
   description = "The domain name for which DNS configuration will be applied."
+  default = "laboratorioderedesinsper.com.br"
 }
 
 variable "dns_records" {

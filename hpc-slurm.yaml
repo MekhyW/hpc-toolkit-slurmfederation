@@ -117,9 +117,6 @@ deployment_groups:
     - compute_partition
     - h3_partition
     - debug_partition
-    settings:
-      dns_zone_name: hpc-slurm
-      dns_domain_name: hpc-slurm
 
   - id: vpn
     source: modules/network/vpn
