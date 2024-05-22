@@ -123,23 +123,28 @@ deployment_groups:
         - name: slurm-controller
           type: A
           ttl: 300
-          target: slurm_controller
+          rrdatas: 
+            - static-controller
         - name: login
           type: A
           ttl: 300
-          target: slurm_login
+          rrdatas:
+            - login_partition
         - name: debug
           type: A
           ttl: 300
-          target: debug_partition
+          rrdatas:
+            - debug_partition
         - name: compute
           type: A
           ttl: 300
-          target: compute_partition
+          rrdatas:
+            - compute_partition
         - name: h3
           type: A
           ttl: 300
-          target: h3_partition
+          rrdatas:
+            - h3_partition
 
   - id: vpn
     source: modules/network/vpn
